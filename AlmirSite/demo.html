@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демо - Almir Mitrofanov Portfolio</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.25rem;
+            color: #a1a1aa;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        
+        .demo-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .demo-card p {
+            color: #a1a1aa;
+            line-height: 1.6;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            color: white;
+            border: none;
+        }
+        
+        .demo-btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .demo-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .demo-btn:hover::before {
+            left: 100%;
+        }
+        
+        .demo-features {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-features h2 {
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #00d4ff;
+        }
+        
+        .feature-text {
+            color: #a1a1aa;
+        }
+        
+        .demo-code {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-line {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .code-prompt {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+        
+        .code-text {
+            color: #ffffff;
+        }
+        
+        .code-output {
+            color: #14b8a6;
+            margin-left: 1rem;
+        }
+        
+        .demo-footer {
+            text-align: center;
+            color: #71717a;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: 2rem;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .demo-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">🌟 Демонстрация возможностей</h1>
+            <p class="demo-subtitle">Современный персональный сайт-визитка с премиальным дизайном</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3><i class="fas fa-palette"></i> Дизайн</h3>
+                <p>Премиальный тёмный дизайн с эффектом стекла (glassmorphism), неоновыми акцентами и плавными анимациями. Современный минималистичный стиль.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3><i class="fas fa-mobile-alt"></i> Адаптивность</h3>
+                <p>Полностью адаптивная вёрстка для всех устройств - от мобильных телефонов до больших мониторов. Оптимизированный пользовательский опыт.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3><i class="fas fa-code"></i> Технологии</h3>
+                <p>Современный стек: HTML5, CSS3, JavaScript ES6+, FastAPI, Python. Использование лучших практик веб-разработки.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3><i class="fas fa-rocket"></i> Производительность</h3>
+                <p>Оптимизированная загрузка, плавные анимации, эффективный код. Быстрая работа на всех устройствах.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3><i class="fas fa-envelope"></i> Контакты</h3>
+                <p>Интегрированная форма обратной связи с отправкой email и уведомлений в Telegram. Полная автоматизация.</p>
+            </div>
+            
+            <div class="demo-card">
+                <h3><i class="fas fa-cogs"></i> Backend</h3>
+                <p>FastAPI сервер с REST API, обработка форм, интеграция с внешними сервисами. Готов к продакшену.</p>
+            </div>
+        </div>
+        
+        <div class="demo-features">
+            <h2>✨ Основные возможности</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-magic feature-icon"></i>
+                    <span class="feature-text">Эффекты glassmorphism</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <span class="feature-text">Плавные анимации</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-palette feature-icon"></i>
+                    <span class="feature-text">Неоновая подсветка</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <span class="feature-text">Мобильная адаптация</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-keyboard feature-icon"></i>
+                    <span class="feature-text">Анимация печатания</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-envelope feature-icon"></i>
+                    <span class="feature-text">Контактная форма</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-robot feature-icon"></i>
+                    <span class="feature-text">Telegram интеграция</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-server feature-icon"></i>
+                    <span class="feature-text">FastAPI backend</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-code">
+            <div class="code-line">
+                <span class="code-prompt">$</span>
+                <span class="code-text">python main.py</span>
+            </div>
+            <div class="code-line">
+                <span class="code-output">INFO: Started server process [12345]</span>
+            </div>
+            <div class="code-line">
+                <span class="code-output">INFO: Waiting for application startup.</span>
+            </div>
+            <div class="code-line">
+                <span class="code-output">INFO: Application startup complete.</span>
+            </div>
+            <div class="code-line">
+                <span class="code-output">INFO: Uvicorn running on http://0.0.0.0:8000</span>
+            </div>
+            <div class="code-line">
+                <span class="code-prompt">$</span>
+                <span class="code-text blinking">_</span>
+            </div>
+        </div>
+        
+        <div class="demo-buttons">
+            <a href="index.html" class="demo-btn demo-btn-primary">
+                <i class="fas fa-eye"></i>
+                Посмотреть сайт
+            </a>
+            <a href="https://github.com" class="demo-btn demo-btn-secondary" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://t.me" class="demo-btn demo-btn-secondary" target="_blank">
+                <i class="fab fa-telegram"></i>
+                Telegram
+            </a>
+        </div>
+        
+        <div class="demo-footer">
+            <p>&copy; 2024 Almir Mitrofanov. Создано с ❤️ и современными технологиями</p>
+        </div>
+    </div>
+    
+    <style>
+        .blinking {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</body>
+</html>

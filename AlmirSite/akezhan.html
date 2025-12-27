@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akezhan Tenrein</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .akezhan-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+
+        .akezhan-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            animation: backgroundPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .akezhan-hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+        }
+
+        .akezhan-name {
+            font-size: 5.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6, #14b8a6, #ec4899, #00d4ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite, nameAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .akezhan-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            animation: underlineGrow 1.5s ease-out 0.8s forwards;
+            border-radius: 2px;
+        }
+
+        @keyframes nameAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            60% {
+                transform: translateY(-10px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes underlineGrow {
+            0% { width: 0; }
+            100% { width: 80%; }
+        }
+
+        .akezhan-class {
+            font-size: 2.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            animation: slideUp 1s ease-out 0.3s both, textGlow 3s ease-in-out infinite 1.5s;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(161, 161, 170, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(161, 161, 170, 0.6); }
+        }
+
+        .akezhan-title {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            animation: slideUp 1s ease-out 0.5s both, titlePulse 2s ease-in-out infinite 1.8s;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 45px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 212, 255, 0.15), transparent 30%);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: rotate(0deg);
+        }
+
+        .achievement-card:hover::before {
+            opacity: 1;
+            transform: rotate(180deg);
+        }
+
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-teal));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .achievement-card:hover::after {
+            opacity: 1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-15px) scale(1.03) rotateY(2deg);
+            border-color: transparent;
+            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.4), 
+                        0 0 80px rgba(139, 92, 246, 0.3),
+                        inset 0 0 60px rgba(0, 212, 255, 0.1);
+        }
+
+        .achievement-icon {
+            font-size: 5rem;
+            color: var(--accent-blue);
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite, iconRotate 20s linear infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px currentColor);
+            transition: all 0.5s ease;
+        }
+
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.2) rotate(360deg);
+            filter: drop-shadow(0 0 30px currentColor) brightness(1.2);
+        }
+
+        .achievement-icon.math {
+            color: var(--accent-purple);
+            animation-delay: 0.2s;
+        }
+
+        .achievement-icon.physics {
+            color: var(--accent-teal);
+            animation-delay: 0.4s;
+        }
+
+        @keyframes iconRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .achievement-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-title {
+            color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .achievement-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-description {
+            color: var(--text-primary);
+        }
+
+        .praise-section {
+            margin-top: 120px;
+            padding: 100px 20px;
+            position: relative;
+            background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.05), transparent);
+        }
+
+        .praise-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            animation: lineGrow 2s ease-out;
+        }
+
+        @keyframes lineGrow {
+            0% { width: 0; opacity: 0; }
+            100% { width: 100%; opacity: 1; }
+        }
+
+        .praise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .praise-title {
+            font-size: 3.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-purple), var(--text-primary));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            animation: slideUp 1s ease-out, gradient-shift 4s ease infinite 1s;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .praise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .praise-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .praise-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .praise-item:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .praise-item:hover {
+            transform: translateY(-10px) scale(1.05) rotateZ(1deg);
+            border-color: var(--accent-pink);
+            box-shadow: 0 20px 50px rgba(236, 72, 153, 0.4),
+                        0 0 60px rgba(236, 72, 153, 0.2);
+        }
+
+        .praise-item i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite, iconBounce 3s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.5));
+            transition: all 0.5s ease;
+        }
+
+        .praise-item:hover i {
+            transform: scale(1.3) rotate(360deg);
+            filter: drop-shadow(0 0 25px rgba(236, 72, 153, 0.8));
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .praise-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            margin-top: 100px;
+            padding: 60px 20px;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: conic-gradient(from 0deg, transparent, rgba(20, 184, 166, 0.2), transparent);
+            animation: statRotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes statRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px) scale(1.08) rotateY(5deg);
+            border-color: var(--accent-teal);
+            box-shadow: 0 30px 60px rgba(20, 184, 166, 0.5),
+                        0 0 80px rgba(20, 184, 166, 0.3),
+                        inset 0 0 60px rgba(20, 184, 166, 0.1);
+        }
+
+        .stat-number {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-teal));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: gradient-shift 3s ease infinite, numberPulse 2s ease-in-out infinite;
+            display: inline-block;
+            letter-spacing: -3px;
+            transition: all 0.5s ease;
+        }
+
+        .stat-card:hover .stat-number {
+            transform: scale(1.2);
+            animation: gradient-shift 1s ease infinite, numberPulse 0.5s ease-in-out infinite;
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 15px 30px;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button:hover {
+            transform: translateX(-8px) scale(1.05);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5),
+                        0 0 60px rgba(0, 212, 255, 0.3);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(139, 92, 246, 0.1));
+        }
+
+        .back-button i {
+            transition: transform 0.4s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        .math-formula {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+            border-left: 5px solid var(--accent-purple);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-purple);
+            text-align: center;
+            animation: formulaGlow 3s ease-in-out infinite, formulaFloat 4s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2),
+                        inset 0 0 20px rgba(139, 92, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .math-formula::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: formulaShine 3s infinite;
+        }
+
+        .achievement-card:hover .math-formula {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4),
+                        inset 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .physics-formula {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(20, 184, 166, 0.05));
+            border-left: 5px solid var(--accent-teal);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-teal);
+            text-align: center;
+            animation: formulaGlow 3s ease-in-out infinite, formulaFloat 4s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(20, 184, 166, 0.2),
+                        inset 0 0 20px rgba(20, 184, 166, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .physics-formula::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: formulaShine 3s infinite;
+        }
+
+        .achievement-card:hover .physics-formula {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(20, 184, 166, 0.4),
+                        inset 0 0 30px rgba(20, 184, 166, 0.2);
+        }
+
+        @keyframes formulaGlow {
+            0%, 100% {
+                box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2),
+                            inset 0 0 20px rgba(139, 92, 246, 0.1);
+            }
+            50% {
+                box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4),
+                            inset 0 0 30px rgba(139, 92, 246, 0.2);
+            }
+        }
+
+        @keyframes formulaFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes formulaShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Smooth section transitions */
+        section {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        section:hover::before {
+            opacity: 0.5;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            margin-top: 120px;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+        }
+
+        .photo-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
+            border-radius: 50%;
+            animation: photoBgPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes photoBgPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .photo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-wrapper {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            animation: photoAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-teal), var(--accent-pink), var(--accent-blue));
+            background-size: 300% 300%;
+            padding: 10px;
+            animation: rotate 20s linear infinite, photoGlow 3s ease-in-out infinite, gradient-shift 5s ease infinite;
+            box-shadow: 0 0 80px rgba(0, 212, 255, 0.7), 
+                        0 0 120px rgba(139, 92, 246, 0.5),
+                        0 0 160px rgba(20, 184, 166, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .photo-wrapper:hover .photo-frame {
+            box-shadow: 0 0 100px rgba(0, 212, 255, 0.9), 
+                        0 0 150px rgba(139, 92, 246, 0.7),
+                        0 0 200px rgba(20, 184, 166, 0.5),
+                        0 0 250px rgba(236, 72, 153, 0.3);
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            background: var(--primary-bg);
+            z-index: 1;
+        }
+
+        .photo-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 4px solid var(--tertiary-bg);
+            animation: photoFloat 4s ease-in-out infinite;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-teal));
+            background-size: 200% 200%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            border: 5px solid var(--tertiary-bg);
+            animation: photoFloat 4s ease-in-out infinite, gradient-shift 4s ease infinite;
+            font-size: 7rem;
+            color: var(--text-primary);
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .photo-wrapper:hover .photo-placeholder {
+            transform: scale(1.1);
+            box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .photo-rings {
+            position: absolute;
+            inset: -25px;
+            border: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: ringPulse 2s ease-in-out infinite, ringRotate 10s linear infinite;
+            filter: drop-shadow(0 0 10px var(--accent-blue));
+        }
+
+        .photo-rings:nth-child(2) {
+            inset: -50px;
+            border-color: var(--accent-purple);
+            animation-delay: 0.5s;
+            filter: drop-shadow(0 0 10px var(--accent-purple));
+        }
+
+        .photo-rings:nth-child(3) {
+            inset: -75px;
+            border-color: var(--accent-teal);
+            animation-delay: 1s;
+            filter: drop-shadow(0 0 10px var(--accent-teal));
+        }
+
+        @keyframes ringRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes photoAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-180deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes photoGlow {
+            0%, 100% {
+                box-shadow: 0 0 60px rgba(0, 212, 255, 0.6), 0 0 100px rgba(139, 92, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(0, 212, 255, 0.9), 0 0 120px rgba(139, 92, 246, 0.7), 0 0 150px rgba(20, 184, 166, 0.5);
+            }
+        }
+
+        @keyframes photoFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        @keyframes ringPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        /* Dota 2 Section */
+        .dota-section {
+            margin-top: 120px;
+            padding: 100px 20px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05), rgba(255, 215, 0, 0.05));
+            overflow: hidden;
+        }
+
+        .dota-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: dotaBgMove 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes dotaBgMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .dota-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dota-title {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideUp 1s ease-out, dotaTitleGlow 3s ease-in-out infinite 1s;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700, #ff6b35);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: -2px;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6));
+        }
+
+        @keyframes dotaTitleGlow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6)); }
+            50% { filter: drop-shadow(0 0 50px rgba(255, 107, 53, 1)); }
+        }
+
+        .top1-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700, #ff6b35);
+            background-size: 200% 200%;
+            color: var(--text-primary);
+            padding: 25px 50px;
+            border-radius: 60px;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 30px auto;
+            text-align: center;
+            animation: badgePulse 2s ease-in-out infinite, slideUp 1s ease-out 0.3s both, gradient-shift 3s ease infinite;
+            box-shadow: 0 0 50px rgba(255, 107, 53, 0.8), 
+                        0 0 100px rgba(247, 147, 30, 0.6),
+                        0 0 150px rgba(255, 215, 0, 0.4),
+                        inset 0 0 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .top1-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 70px rgba(255, 107, 53, 1), 
+                        0 0 120px rgba(247, 147, 30, 0.8),
+                        0 0 180px rgba(255, 215, 0, 0.6);
+        }
+
+        .top1-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: badgeShine 3s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 40px rgba(255, 107, 53, 0.6), 0 0 80px rgba(247, 147, 30, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 60px rgba(255, 107, 53, 0.9), 0 0 120px rgba(247, 147, 30, 0.7);
+            }
+        }
+
+        @keyframes badgeShine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 3px solid var(--glass-border);
+            border-radius: 35px;
+            padding: 50px;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            animation: heroCardAppear 1s ease-out;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 107, 53, 0.3), transparent 30%);
+            transition: transform 0.6s ease;
+            transform: rotate(0deg);
+        }
+
+        .hero-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 35px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-teal));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .hero-card:hover::after {
+            opacity: 1;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-20px) scale(1.05) rotateY(5deg);
+            border-color: transparent;
+            box-shadow: 0 30px 70px rgba(255, 107, 53, 0.5), 
+                        0 0 100px rgba(255, 107, 53, 0.4),
+                        inset 0 0 60px rgba(255, 107, 53, 0.1);
+        }
+
+        .hero-card.od {
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .hero-card.od::before {
+            background: conic-gradient(from 0deg, transparent, rgba(139, 92, 246, 0.3), transparent 30%);
+        }
+
+        .hero-card.od::after {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-pink));
+        }
+
+        .hero-card.od:hover {
+            border-color: transparent;
+            box-shadow: 0 30px 70px rgba(139, 92, 246, 0.5), 
+                        0 0 100px rgba(139, 92, 246, 0.4),
+                        inset 0 0 60px rgba(139, 92, 246, 0.1);
+        }
+
+        .hero-card.es {
+            border-color: rgba(20, 184, 166, 0.5);
+        }
+
+        .hero-card.es::before {
+            background: conic-gradient(from 0deg, transparent, rgba(20, 184, 166, 0.3), transparent 30%);
+        }
+
+        .hero-card.es::after {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan), var(--accent-green));
+        }
+
+        .hero-card.es:hover {
+            border-color: transparent;
+            box-shadow: 0 30px 70px rgba(20, 184, 166, 0.5), 
+                        0 0 100px rgba(20, 184, 166, 0.4),
+                        inset 0 0 60px rgba(20, 184, 166, 0.1);
+        }
+
+        .hero-icon {
+            font-size: 7rem;
+            margin-bottom: 25px;
+            animation: heroIconFloat 3s ease-in-out infinite, heroIconRotate 10s linear infinite;
+            filter: drop-shadow(0 0 25px currentColor);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
+        }
+
+        .hero-card:hover .hero-icon {
+            transform: scale(1.3) rotate(360deg);
+            filter: drop-shadow(0 0 40px currentColor) brightness(1.3);
+        }
+
+        .hero-card.od .hero-icon {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation-delay: 0.2s;
+        }
+
+        .hero-card.es .hero-icon {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes heroIconRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-name {
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hero-card:hover .hero-name {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .hero-card.od:hover .hero-name {
+            color: var(--accent-purple);
+        }
+
+        .hero-card.es:hover .hero-name {
+            color: var(--accent-teal);
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            line-height: 2;
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .hero-card:hover .hero-description {
+            color: var(--text-primary);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @keyframes heroCardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) rotateX(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg);
+            }
+        }
+
+        @keyframes heroIconFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        /* Particles Animation */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        .particle:nth-child(2n) {
+            background: var(--accent-purple);
+            animation-duration: 20s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--accent-teal);
+            animation-duration: 25s;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced animations */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkleAnim 2s infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .wave-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.1));
+            animation: waveMove 10s infinite;
+        }
+
+        @keyframes waveMove {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-50px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .akezhan-name {
+                font-size: 3rem;
+            }
+            .akezhan-class {
+                font-size: 1.5rem;
+            }
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            .photo-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+            .heroes-grid {
+                grid-template-columns: 1fr;
+            }
+            .dota-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="/" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>На главную</span>
+    </a>
+
+    <!-- Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="akezhan-hero">
+        <div class="akezhan-hero-content">
+            <h1 class="akezhan-name">Akezhan TenRein</h1>
+            <p class="akezhan-class">Winner of the 2025 Dota 2 Battle Cup | Winner of the 2025 Math and Physics Olympiads.</p>
+            <p class="akezhan-title">🌟 Talented mathematician and physicist 🌟</p>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card slide-up-animation">
+                    <div class="achievement-icon math">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="achievement-title">Mathematics</h3>
+                    <p class="achievement-description">
+                        Akezhan demonstrates exceptional abilities in mathematics! 
+                        Он легко решает сложные задачи, понимает абстрактные концепции 
+                        and always ready to help classmates. His analytical mind and 
+                        logical thinking make him a true master of numbers!
+                    </p>
+                    <div class="math-formula">
+                        ∫ f(x)dx = F(x) + C
+                    </div>
+                </div>
+
+                <div class="achievement-card slide-up-animation" style="animation-delay: 0.2s;">
+                    <div class="achievement-icon physics">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="achievement-title">Physics</h3>
+                    <p class="achievement-description">
+                        In physics, Akezhan shows incredible results! 
+                        He perfectly understands the laws of nature, can explain 
+                        complex physical phenomena and always strives for new knowledge. 
+                        His curiosity and inquisitive mind open up boundless possibilities before him!
+                    </p>
+                    <div class="physics-formula">
+                        E = mc²
+                    </div>
+                </div>
+
+                <div class="achievement-card slide-up-animation" style="animation-delay: 0.4s;">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="achievement-title">Personal qualities</h3>
+                    <p class="achievement-description">
+                        Akezhan is not only a good student, but also a wonderful friend! 
+                        He always ready to help, supports classmates and creates a positive atmosphere in the class. 
+                        His determination, hard work and kindness make him a special person!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Section -->
+    <section class="photo-section">
+        <div class="photo-container">
+            <div class="photo-wrapper">
+                <div class="photo-rings"></div>
+                <div class="photo-rings"></div>
+                <div class="photo-rings"></div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <img src="static/babach.png" alt="Акежан" class="photo-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Praise Section -->
+    <section class="praise-section">
+        <div class="praise-container">
+            <h2 class="praise-title">Why is Akezhan special? ✨</h2>
+            <div class="praise-grid stagger-animation">
+                <div class="praise-item">
+                    <i class="fas fa-brain"></i>
+                    <p class="praise-text">Brilliant analytical mind and ability to solve complex problems</p>
+                </div>
+                <div class="praise-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <p class="praise-text">Creative approach to solving mathematical and physical problems</p>
+                </div>
+                <div class="praise-item">
+                    <i class="fas fa-trophy"></i>
+                    <p class="praise-text">Constant striving for perfection and achieving high results</p>
+                </div>
+                <div class="praise-item">
+                    <i class="fas fa-book-reader"></i>
+                    <p class="praise-text">Deep love for knowledge and continuous self-development</p>
+                </div>
+                <div class="praise-item">
+                    <i class="fas fa-users"></i>
+                    <p class="praise-text">Excellent communication skills and ability to work in a team</p>
+                </div>
+                <div class="praise-item">
+                    <i class="fas fa-rocket"></i>
+                    <p class="praise-text">Bright future in science and technology awaits him!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="praise-title">Akezhan's Achievements 🏆</h2>
+            <div class="stats-grid">
+                <div class="stat-card scale-in-animation">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Academic Performance</div>
+                </div>
+                <div class="stat-card scale-in-animation" style="animation-delay: 0.1s;">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Potential</div>
+                </div>
+                <div class="stat-card scale-in-animation" style="animation-delay: 0.2s;">
+                    <div class="stat-number">9В</div>
+                    <div class="stat-label">Class</div>
+                </div>
+                <div class="stat-card scale-in-animation" style="animation-delay: 0.3s;">
+                    <div class="stat-number">⭐</div>
+                    <div class="stat-label">Star Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dota 2 Section -->
+    <section class="dota-section">
+        <div class="dota-container">
+            <h2 class="dota-title">🎮 TenRein in Dota 2</h2>
+            <div style="text-align: center; width: 100%;">
+                <div class="top1-badge">    
+                    🏆 TOP 1 MIDDLE OF KAZAKHSTAN 🏆
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-secondary); font-size: 1.3rem; margin-top: 30px; animation: slideUp 1s ease-out 0.5s both;">
+                Akezhan is a true master of Dota 2! His skills and gameplay on the middle are amazing. 
+                He demonstrates incredible mechanics, tactical thinking and ability to 
+                take correct decisions in critical moments of the game.
+            </p>
+            
+            <div class="heroes-grid">
+                <div class="hero-card od">
+                    <div class="hero-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="hero-name">Outworld Destroyer</h3>
+                    <p class="hero-description">
+                        Akezhan plays Outworld Destroyer virtuosically! His understanding of the hero 
+                        at the highest level. He masterfully uses Astral Imprisonment for 
+                        control, Sanity's Eclipse for final strikes, and his positioning in the battle is simply perfect. With Akezhan on OD, the team can always count on victory!
+                    </p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">75%</div>
+                            <div class="hero-stat-label">Win Rate</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">500+</div>
+                            <div class="hero-stat-label">Games</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card es">
+                    <div class="hero-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="hero-name">Earthshaker</h3>
+                    <p class="hero-description">
+                        On Earthshaker, Akezhan shows phenomenal gameplay! His Echo Slam 
+                        always hits the target exactly, blocking enemies Fissure in the most critical 
+                        moments. He reads the game like an open book and always ends up in the right place at the right time. This is a true professional!
+                    </p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">92%</div>
+                            <div class="hero-stat-label">Win Rate</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">6000</div>
+                            <div class="hero-stat-label">pts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Дополнительные анимации при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.achievement-card, .praise-item, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Анимация чисел
+        const animateNumbers = () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                if (stat.textContent === '∞') {
+                    stat.style.animation = 'pulse 2s infinite';
+                }
+            });
+        };
+
+        animateNumbers();
+
+        // Создание частиц
+        const createParticles = () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        };
+
+        createParticles();
+
+        // Анимация появления элементов при скролле для новых секций
+        document.querySelectorAll('.hero-card, .photo-wrapper, .top1-badge').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Интерактивные эффекты для карточек героев
+        document.querySelectorAll('.hero-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03) rotateY(5deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+            });
+        });
+
+        // Анимация бейджа
+        const badge = document.querySelector('.top1-badge');
+        if (badge) {
+            setInterval(() => {
+                badge.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    badge.style.transform = 'scale(1)';
+                }, 200);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

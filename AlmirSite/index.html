@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almir Mitrofanov - Full-Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Almir</span>
+                        <span class="logo-title">Developer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Главная</span>
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Обо мне</span>
+                </a>
+                <a href="#skills" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Навыки</span>
+                </a>
+                <a href="#projects" class="nav-link">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Проекты</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Контакты</span>
+                </a>
+                <a href="/akezhan" class="nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>Акежан</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Almir</span>
+                        <span class="title-line">Mitrofanov</span>
+                    </h1>
+                    <p class="hero-subtitle">15 y.o. Full-Stack Web Developer, Bot & Parser Creator</p>
+                    <div class="hero-buttons">
+                        <a href="https://github.com" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="https://t.me" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                            Telegram
+                        </a>
+                        <a href="mailto:almir@example.com" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="window-title">terminal</span>
+                        </div>
+                        <div class="window-content">
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-text">whoami</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-output">Almir Mitrofanov</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-text">cat skills.txt</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-output">Full-Stack Developer</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-output">Bot Creator</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-output">Parser Developer</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-text blinking">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Обо мне</h2>
+                <p class="section-subtitle">Молодой разработчик с большими амбициями</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="glass-card">
+                        <p>Привет! Меня зовут Альмир, и я увлечённый разработчик в возрасте 15 лет. Специализируюсь на создании современных веб-приложений, разработке ботов и парсеров.</p>
+                        <p>Моя страсть — это превращение идей в функциональный код. Я работаю с современными технологиями и постоянно изучаю новые инструменты для создания качественных решений.</p>
+                        <div class="tech-icons">
+                            <div class="tech-icon" data-tech="python">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-icon" data-tech="javascript">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-icon" data-tech="fastapi">
+                                <i class="fas fa-bolt"></i>
+                                <span>FastAPI</span>
+                            </div>
+                            <div class="tech-icon" data-tech="nodejs">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-terminal">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="terminal-title">about_me.py</span>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-text">python about_me.py</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-comment"># Профиль разработчика</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-comment"># =========================</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">name</span> = <span class="terminal-string">"Almir Mitrofanov"</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">age</span> = <span class="terminal-number">15</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">title</span> = <span class="terminal-string">"Full-Stack Developer"</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">location</span> = <span class="terminal-string">"Russia"</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">experience</span> = <span class="terminal-number">3</span> <span class="terminal-comment"># years</span>
+                            </div>
+                            <div class="terminal-output">
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-keyword">skills</span> = {
+                            </div>
+                            <div class="terminal-output">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="terminal-string">"frontend"</span>: [<span class="terminal-string">"HTML5"</span>, <span class="terminal-string">"CSS3"</span>, <span class="terminal-string">"JavaScript"</span>],
+                            </div>
+                            <div class="terminal-output">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="terminal-string">"backend"</span>: [<span class="terminal-string">"Python"</span>, <span class="terminal-string">"FastAPI"</span>, <span class="terminal-string">"Node.js"</span>],
+                            </div>
+                            <div class="terminal-output">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="terminal-string">"specialties"</span>: [<span class="terminal-string">"Bot Development"</span>, <span class="terminal-string">"Web Scraping"</span>]
+                            </div>
+                            <div class="terminal-output">
+                                }
+                            </div>
+                            <div class="terminal-output">
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-comment"># Вывод информации</span>
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-function">print</span>(<span class="terminal-string">f"Hello! I'm {name}"</span>)
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-function">print</span>(<span class="terminal-string">f"I'm {age} years old {title}"</span>)
+                            </div>
+                            <div class="terminal-output">
+                                <span class="terminal-comment"># =========================</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-text blinking">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Навыки</h2>
+                <p class="section-subtitle">Мои технические навыки в виде радара</p>
+            </div>
+            <div class="skills-content">
+                <div class="radar-container">
+                    <div class="radar-chart">
+                        <svg class="radar-svg" viewBox="0 0 400 400">
+                            <!-- Концентрические круги -->
+                            <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="90" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <circle cx="200" cy="200" r="30" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            
+                            <!-- Оси радара -->
+                            <line x1="200" y1="50" x2="200" y2="350" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                            <line x1="50" y1="200" x2="350" y2="200" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                            <line x1="85" y1="85" x2="315" y2="315" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                            <line x1="315" y1="85" x2="85" y2="315" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                            
+                            <!-- Полигон навыков -->
+                            <polygon class="skills-polygon" points="200,80 280,160 240,280 160,280 120,160" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2"/>
+                            
+                            <!-- Точки навыков -->
+                            <circle cx="200" cy="80" r="6" fill="#00d4ff" class="skill-point" data-skill="Frontend"/>
+                            <circle cx="280" cy="160" r="6" fill="#8b5cf6" class="skill-point" data-skill="Backend"/>
+                            <circle cx="240" cy="280" r="6" fill="#14b8a6" class="skill-point" data-skill="Tools"/>
+                            <circle cx="160" cy="280" r="6" fill="#ec4899" class="skill-point" data-skill="Bots"/>
+                            <circle cx="120" cy="160" r="6" fill="#10b981" class="skill-point" data-skill="Parsing"/>
+                        </svg>
+                        
+                        <!-- Подписи навыков -->
+                        <div class="skill-label skill-label-1" data-skill="Frontend">
+                            <div class="label-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="label-text">
+                                <span class="label-name">Frontend</span>
+                                <span class="label-percent">85%</span>
+                            </div>
+                        </div>
+                        <div class="skill-label skill-label-2" data-skill="Backend">
+                            <div class="label-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="label-text">
+                                <span class="label-name">Backend</span>
+                                <span class="label-percent">90%</span>
+                            </div>
+                        </div>
+                        <div class="skill-label skill-label-3" data-skill="Tools">
+                            <div class="label-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="label-text">
+                                <span class="label-name">Tools</span>
+                                <span class="label-percent">75%</span>
+                            </div>
+                        </div>
+                        <div class="skill-label skill-label-4" data-skill="Bots">
+                            <div class="label-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="label-text">
+                                <span class="label-name">Bots</span>
+                                <span class="label-percent">80%</span>
+                            </div>
+                        </div>
+                        <div class="skill-label skill-label-5" data-skill="Parsing">
+                            <div class="label-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="label-text">
+                                <span class="label-name">Parsing</span>
+                                <span class="label-percent">88%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-details">
+                    <div class="skills-info glass-card">
+                        <h3>Детали навыков</h3>
+                        <div class="skill-categories">
+                            <div class="skill-category" data-category="frontend">
+                                <div class="category-header">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Frontend</h4>
+                                    <span class="category-level">Advanced</span>
+                                </div>
+                                <div class="category-skills">
+                                    <span class="skill-tag">HTML5</span>
+                                    <span class="skill-tag">CSS3</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">React</span>
+                                </div>
+                            </div>
+                            <div class="skill-category" data-category="backend">
+                                <div class="category-header">
+                                    <i class="fas fa-server"></i>
+                                    <h4>Backend</h4>
+                                    <span class="category-level">Expert</span>
+                                </div>
+                                <div class="category-skills">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">FastAPI</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">SQL</span>
+                                </div>
+                            </div>
+                            <div class="skill-category" data-category="tools">
+                                <div class="category-header">
+                                    <i class="fas fa-tools"></i>
+                                    <h4>Tools</h4>
+                                    <span class="category-level">Intermediate</span>
+                                </div>
+                                <div class="category-skills">
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">Linux</span>
+                                    <span class="skill-tag">AWS</span>
+                                </div>
+                            </div>
+                            <div class="skill-category" data-category="bots">
+                                <div class="category-header">
+                                    <i class="fas fa-robot"></i>
+                                    <h4>Bots</h4>
+                                    <span class="category-level">Advanced</span>
+                                </div>
+                                <div class="category-skills">
+                                    <span class="skill-tag">Telegram Bot</span>
+                                    <span class="skill-tag">Discord Bot</span>
+                                    <span class="skill-tag">aiogram</span>
+                                    <span class="skill-tag">pyTelegramBotAPI</span>
+                                </div>
+                            </div>
+                            <div class="skill-category" data-category="parsing">
+                                <div class="category-header">
+                                    <i class="fas fa-search"></i>
+                                    <h4>Parsing</h4>
+                                    <span class="category-level">Expert</span>
+                                </div>
+                                <div class="category-skills">
+                                    <span class="skill-tag">BeautifulSoup</span>
+                                    <span class="skill-tag">Scrapy</span>
+                                    <span class="skill-tag">Selenium</span>
+                                    <span class="skill-tag">Requests</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Стоимость услуг</h2>
+                <p class="section-subtitle">Цены и отзывы</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Веб-приложение, сайты</h3>
+                        <p>Современное веб-приложение с современным дизайном</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">🔥Быстро</span>
+                            <span class="tech-tag">⭐Дизайн</span>
+                            <span class="tech-tag">♥️Красиво</span>
+                            <span class="tech-tag">❄️Плавно</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            От 30$ (91 покупок)
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Telegram Bot</h3>
+                        <p>Умный бот для автоматизации задач с большим функционалом и быстрыми ответами</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">💪Шустрый</span>
+                            <span class="tech-tag">🤝Без ошибок</span>
+                            <span class="tech-tag">🌿Надежно</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            От 5$ (85 покупок)
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Разработка сервера</h3>
+                        <p>Высокопроизводительный сервер с высокими пропускными способностями</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">💾Профессионал</span>
+                            <span class="tech-tag">🌐Безопасность</span>
+                            <span class="tech-tag">🔧Гарантия</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            От 100$ (31 покупок)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Контакты</h2>
+                <p class="section-subtitle">Давайте работать вместе</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card glass-card">
+                        <h3>Свяжитесь со мной</h3>
+                        <p>Готов к новым проектам и интересным задачам!</p>
+                        <div class="contact-links">
+                            <a href="https://t.me/mitrofanovlive" class="contact-link" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                            <a href="https://github.com" class="contact-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="mailto:almir@example.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="glass-card" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Сообщение" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Almir Mitrofanov. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#home">Главная</a>
+                    <a href="#about">Обо мне</a>
+                    <a href="#skills">Навыки</a>
+                    <a href="#projects">Проекты</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
